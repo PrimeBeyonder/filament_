@@ -50,12 +50,15 @@ class StateResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('country.name')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('name')
-                ->label("State Name")
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
+                    Tables\Columns\TextColumn::make('name')
+                    ->label("State Name")
+                    ->searchable(isIndividual:true),
+                    Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
+                    ->searchable(isIndividual:true)
+                    // ->hidden(auth()->user()->name === "abc")
+                    // ->vissable(auth()->user()->name === "abc")
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
